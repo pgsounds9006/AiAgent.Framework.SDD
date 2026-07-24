@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+    paths: ['src/skills/**', 'scripts/package-skill.sh', '.github/workflows/ci.yml']
+  pull_request:
+    paths: ['src/skills/**', 'scripts/package-skill.sh', '.github/workflows/ci.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate frontmatter
+        run: |
+          SKILL=src/skills/software-development/SKILL.md
+          test -f "$SKILL" || { echo "::error::$SKILL missing"; exit 1; }
+          for key in name description version; do
+            grep -qE "^$key:" "$SKILL" || { echo "::error::frontmatter missing '$key'"; exit 1; }
+          done
+          VER="$(grep -m1 '^version:' "$SKILL" | sed 's/^version:[[:space:]]*//' | tr -d '[:space:]')"
+          echo "$VER" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$' \
+            || { echo "::error::version '$VER' is not semver x.y.z"; exit 1; }
+          echo "frontmatter OK (version=$VER)"
+
+      - name: Validate structure
+        run: |
+          DIR=src/skills/software-development
+          test -d "$DIR/references" || { echo "::error::references/ missing"; exit 1; }
+          find "$DIR/references" -name '*.md' | grep -q . \
+            || { echo "::error::no reference markdown found"; exit 1; }
+          echo "structure OK"
+
+      - name: Package smoke test
+        run: bash scripts/package-skill.sh

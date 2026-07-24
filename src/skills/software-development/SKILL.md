@@ -1,5 +1,6 @@
 ---
 name: software-development
+version: 0.1.0
 description: >
   Context-aware engineering of software systems. Covers understanding an
   existing system before changing it, treating diagnoses as hypotheses,

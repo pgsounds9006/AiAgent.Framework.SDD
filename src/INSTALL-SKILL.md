@@ -10,14 +10,27 @@ content and the harness's full resident configuration in one context;
 a judgment deferred to later work assumes an observer that
 installation does not leave behind.
 
-## First act: place, and observe
+## First act: place, then follow the procedure
 
-Place the skill directory — `skills/software-development/` — where the
-harness's own loader looks, and run a substantive engineering task.
-This placement is the precondition of everything that follows: it
-costs nothing to reverse, and it is the only way to observe how the
-harness actually loads. Do not infer from the harness's documentation
-or reputation; run the experiment.
+Installation is two acts: place the skill where the harness's loader
+looks, then follow the procedure below. The first is nearly the whole of
+it, but it is not all of it — placing the skill is not the same as having
+installed it. Place the skill directory — `skills/software-development/`,
+unpacked from the distributed archive if that is how it arrives — where
+the harness's own loader looks, and run a substantive engineering task.
+This placement is the precondition of everything that follows: it costs
+nothing to reverse, and it is the only way to observe how the harness
+actually loads. Do not infer from the harness's documentation or
+reputation; run the experiment. What the procedure needs after that —
+the reading, the resident-system survey, the coupling judgment — is part
+of installing, reached in turn rather than studied up front.
+
+The canonical package is the release asset at a version-stable endpoint —
+`https://github.com/pgsounds9006/AiAgent.Framework.SDD/releases/latest/download/software-development.skill`
+— which always resolves to the current release, so a reference to it
+survives every version bump and needs no re-editing when a new one ships.
+The version a placed copy carries is recorded in its own `SKILL.md`
+frontmatter; the git tag only mirrors it.
 
 The task yields the mechanical half of the installation's evidence:
 whether the skill loads at all, and whether the harness consults it
