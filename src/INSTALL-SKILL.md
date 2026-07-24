@@ -3,69 +3,90 @@
 Installing this skill means giving one agent environment — a harness —
 a way to consult this repository at the right moments. The procedure
 has an unusual shape: its first act is its cheapest experiment, it
-reads far more than it writes, and it treats every written line as a
-liability to be justified by an observed failure.
+reads far more than it writes, and every line it writes must be
+justified by something observed during the installation itself. The
+installer is the only agent that will ever hold this skill's full
+content and the harness's full resident configuration in one context;
+a judgment deferred to later work assumes an observer that
+installation does not leave behind.
 
 ## First act: place, and observe
 
 Place the skill directory — `skills/software-development/` — where the
-harness's own loader looks, and run a substantive engineering task. This placement is the precondition of every rung
-that follows: it costs nothing to reverse, and it is the only way to
-observe which rung the harness actually is. Do not infer the rung from
-the harness's documentation or reputation; run the experiment.
+harness's own loader looks, and run a substantive engineering task.
+This placement is the precondition of everything that follows: it
+costs nothing to reverse, and it is the only way to observe how the
+harness actually loads. Do not infer from the harness's documentation
+or reputation; run the experiment.
 
-A harness that loads this skill natively and consults it during that
-task is completely installed by that placement. Stop there. Writing a
-bridge for such a harness is residue at birth; writing hooks, wrapper
-scripts, or additional always-on rules around it is worse — an
-intervention compensating for a weakness that was never observed.
-Appearing in a skill list is registration, not installation: what
-closes the placement is the task showing the skill at work, not the
-loader showing its name.
+The task yields the mechanical half of the installation's evidence:
+whether the skill loads at all, and whether the harness consults it
+when it applies. Appearing in a skill list is registration, not
+installation — what counts is the task showing the skill at work, not
+the loader showing its name. Whatever the result, write nothing yet:
+the other half of the evidence comes from the survey.
 
-**A bridge is a compensation, and a compensation requires an observed
-weakness.** Only an observed failure licenses going further, and
-loading is not the only place a placement fails. Three couplings fail
-too. *Silence* — the skill loads, but the harness's resident
-configuration so dominates the context that the skill is never
-actually consulted. *Conflict* — a resident instruction and the skill
-pull a judgment in opposite directions, and nothing says which yields.
-*Double voice* — the harness already carries engineering guidance of
-its own, and the same judgment now answers to two authorities. Each of
-these is as observable as a loading failure, and only observation
-counts: "this harness probably can't integrate it" is a presumption,
-and the kernel's provenance rule applies to the bridge's own reason
-for existing.
+## Read wide
 
-## Before writing anything, read wide
-
-A failure was observed, so something will now be written — and this is
-the point where reading pays. Installation happens once; its cost is
-amortized over every later use. Read `RATIONALE.md` for the reasons —
-an installer holding only rules is correct only in enumerated cases,
+Reading is what makes the survey possible — coupling cannot be judged
+without holding both sides. Read `RATIONALE.md` for the reasons — an
+installer holding only rules is correct only in enumerated cases,
 while one holding the reasons is correct in the cases nothing
 enumerates — and `skills/software-development/SKILL.md` with its
 references, because they are the thing being installed and their
-description is the authority on when the skill should trigger. Reading
-creates no coupling. Restating does. Read everything; bind to almost
-nothing.
+description is the authority on when the skill should trigger.
+Installation happens once; its cost is amortized over every later
+use. Reading creates no coupling. Restating does. Read everything;
+bind to almost nothing.
+
+## Survey the resident system
+
+Enumerate everything in the harness that speaks while engineering
+work is done: always-loaded configuration (rules files, agent
+guideline files, system-prompt surfaces), other installed skills,
+hooks and wrappers that inject instructions. This is observation, not
+presumption — the resident configuration is text that exists now and
+can be read now, and a conflict between two written instructions is
+visible on the page long before any task trips over it.
+
+For each resident voice, ask two questions: does it speak on the
+subjects this skill speaks on, and if so, does it contradict the
+skill anywhere — and is the precedence between them written down?
+Three findings matter. *Silence* — an always-injected surface
+dominates the context so thoroughly that a loaded skill goes
+unconsulted; the first act's task is the probe for this. *Conflict* —
+a resident instruction and the skill pull the same judgment in
+opposite directions, with nothing saying which yields. *Double voice*
+— the harness already carries engineering guidance of its own, and
+the same judgment now answers to two authorities.
+
+**A bridge is a compensation, and a compensation requires an observed
+weakness** — and every weakness above is observable here, inside the
+installation: loading and silence by the first act's task, conflict
+and double voice by reading the resident configuration against the
+skill. "This harness probably can't integrate it" remains a
+presumption; "this rules file contradicts the skill at these points"
+is an observation, and only the second licenses writing.
 
 ## The ladder
 
-Each rung is a larger compensation, and each is licensed only by the
-observed failure of the rung below.
+Each rung is a larger compensation, licensed only by what the first
+act and the survey observed.
 
-**Rung 0 — placement.** The harness loads the skill and the task shows
-it consulted. Nothing is written.
+**Rung 0 — placement.** The skill loads, the task shows it consulted,
+and the survey found no resident voice on its subjects. Nothing is
+written. Writing a bridge here is residue at birth; hooks, wrapper
+scripts, or additional always-on rules are worse — interventions
+compensating for a weakness that was never observed.
 
 **Rung 1 — a pointer in existing configuration.** The harness has an
-always-loaded configuration surface (a rules file, agent guidelines, a
-system-prompt section), and either it lacks native skill loading, or
-loading succeeded while the coupling failed — the resident
-configuration silenced the skill, collided with it, or already speaks
-on the same subjects. Add the four elements below as a short block; for
-a coupling failure, the subordination clause is the element doing the
-work, because it writes down the precedence the collision showed was
+always-loaded configuration surface (a rules file, agent guidelines,
+a system-prompt section), and either it lacks native skill loading,
+or loading succeeded while the survey found a coupling failure — a
+resident voice that silences the skill, collides with it, or already
+speaks on its subjects. Add the four elements below as a short block;
+for a coupling failure, the subordination clause is the element doing
+the work, because it writes down the precedence the survey showed was
 missing. Resist the surrounding convention: such files usually carry
 content, and the pressure to inline "just the key principles" is
 exactly the copy this document forbids.
