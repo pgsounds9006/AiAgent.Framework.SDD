@@ -1,3 +1,4 @@
+[English](README.md) | [한국어](README.ko.md)
 # AiAgent.Framework.SDD
 
 소프트웨어 개발을 위한 에이전트 스킬입니다. 이 스킬은 한 가지 기준에서 출발합니다.
