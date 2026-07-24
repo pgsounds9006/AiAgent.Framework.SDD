@@ -40,7 +40,8 @@ knows it is finishing an installation rather than merely using one.
 ## Read wide
 
 Reading is what makes the survey possible — coupling cannot be judged
-without holding both sides. Read `RATIONALE.md` for the reasons — an
+without holding both sides. Read
+`skills/software-development/references/rationale.md` for the reasons — an
 installer holding only rules is correct only in enumerated cases,
 while one holding the reasons is correct in the cases nothing
 enumerates — and `skills/software-development/SKILL.md` with its

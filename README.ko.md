@@ -29,7 +29,7 @@ Spec-Driven Development라는 큰 틀에서 이 스킬이 담당하는 것은 �
 
 이 스킬이 다루는 것은 바로 이 문제입니다.
 
-자세한 논지는 `RATIONALE.md`에 설명되어 있습니다.
+자세한 논지는 `src/skills/software-development/references/rationale.md`에 설명되어 있습니다.
 
 ## 파일 구성
 
@@ -41,7 +41,7 @@ Spec-Driven Development라는 큰 틀에서 이 스킬이 담당하는 것은 �
 
 **이렇게 설계한 이유**
 
-`src/RATIONALE.md`에 있습니다. 왜 기준을 하나로 한정했는지, 어떤 내용을 의도적으로 제외했는지, 어디에 위험이 있는지, 아직 풀지 못한 문제는 무엇인지 설명합니다.
+`src/skills/software-development/references/rationale.md`에 있습니다. 왜 기준을 하나로 한정했는지, 어떤 내용을 의도적으로 제외했는지, 어디에 위험이 있는지, 아직 풀지 못한 문제는 무엇인지 설명합니다.
 
 도입하기 전뿐 아니라 설치하기 전에도 이 문서를 읽는 것이 좋습니다. 지침에 적혀 있지 않은 상황을 만났을 때 올바르게 판단할 수 있게 해주는 것은 결국 개별 절차가 아니라 그 절차를 만든 이유이기 때문입니다.
 

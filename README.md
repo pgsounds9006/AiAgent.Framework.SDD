@@ -19,13 +19,15 @@ not belong here.
 
 Within spec-driven development, this occupies the epistemology axis:
 not how to author and enforce specs, but where a spec's content comes
-from and when it may be fixed. The full argument is in `RATIONALE.md`.
+from and when it may be fixed. The full argument is in
+`src/skills/software-development/references/rationale.md`.
 
 ## Where everything lives
 
 Everything that ships lives under `src/`. **The content** is the
 skill itself at `src/skills/software-development/` — read it, not
-summaries of it. **The reasons** are in `src/RATIONALE.md`: why one
+summaries of it. **The reasons** are in
+`src/skills/software-development/references/rationale.md`: why one
 axis, what was deliberately omitted, where the risk lives, what
 remains unresolved. Read it before adopting, and before installing —
 reasons are what keep an installer correct in the cases no
