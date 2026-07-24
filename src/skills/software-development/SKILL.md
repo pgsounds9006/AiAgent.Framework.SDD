@@ -13,12 +13,15 @@ description: >
 
 Software is a system of intent, observable behavior, contracts,
 implementation, verification, and operational context. Engineering it well
-means keeping those layers honest with each other.
+means keeping those layers honest with each other as the system changes.
 
 ## Kernel
 
 These hold regardless of what stage the work is in — and regardless of
-how capable the tools doing the work become.
+how capable the tools doing the work become. Apply them in proportion to
+the consequence of being wrong: cheap, internal, and reversible choices
+permit lightweight judgment; claims that establish contracts, create
+dependencies, or resist reversal demand stronger evidence.
 
 **Every diagnosis is a hypothesis — including the user's and your own.**
 The user may misattribute a failure; you may misread an API's semantics;
@@ -31,22 +34,37 @@ would confirm or refute it — then prefer obtaining that observation over
 trusting the diagnosis.
 
 **Naming something and compiling it does not make it a contract.**
-A parameter, field, or feature becomes a contract only when its claimed
-meaning has been verified against actual behavior. If a capability's
-semantics haven't been confirmed, it is a hypothesis wearing a
-contract's clothes — and shipping it misleads every future consumer.
+A parameter, field, feature, or abstraction becomes a contract only when
+the meaning attributed to it has been verified against actual behavior.
+Until then, it is a hypothesis wearing a contract's clothes — and
+shipping it misleads every future consumer. Keep uncertain semantics
+easy to revise and do not present proposed interpretations as settled
+guarantees.
+
+**Seeing something run once does not make it verified.**
+A throwaway probe — an ad-hoc entry point, a one-off script, a value
+printed and read by eye — is a legitimate, often the fastest, way to
+obtain an observation; reaching for one is not the error. The error is
+letting the probe stand in as the verification. What confirmed the
+behavior lived somewhere that runs once and vanishes, while the meaning
+it established now travels as though something repeatable were guarding
+it. The question is not "did I see it work" but where the check that
+proves it lives, whether it will run again when someone changes this,
+and whether it inhabits the strongest practical layer — test, schema,
+runtime validation, contract probe, or otherwise.
 
 **Provenance is demanded when a value is promoted, not when it is picked.**
-Choosing a reasonable-seeming timeout, retry count, or buffer size and
-moving on is legitimate — as an internal, cheap-to-change choice. Two
-things change the rules. When a value claims to mirror an external
-reality (a server's page limit, a protocol boundary), its provenance is
-observation: verify the boundary instead of guessing it. And when any
-value crosses into a contract layer — a schema constraint, a documented
-limit, a default consumers will build against — "it seemed reasonable"
-stops being an answer: establish provenance or mark it explicitly as
-chosen policy. The failure mode is never arbitrariness itself; it is an
-arbitrary value wearing the appearance of a discovered boundary.
+Choosing a reasonable-seeming timeout, retry count, buffer size, or
+default and moving on is legitimate — as an internal, cheap-to-change
+choice. Promotion changes the rules. When a value claims to mirror an
+external reality, such as a server limit or protocol boundary, its
+provenance is observation: verify the boundary instead of guessing it.
+When any value crosses into a contract layer — a schema constraint, a
+documented limit, a default consumers will build against — "it seemed
+reasonable" stops being an answer: establish provenance or mark it
+explicitly as chosen policy. The failure mode is never arbitrariness
+itself; it is an arbitrary value wearing the appearance of a discovered
+boundary.
 
 **Assumptions surface under questioning, not inspection.**
 The questions that most often redirect work require no domain expertise:
@@ -56,12 +74,13 @@ it passes? Why does this information live at this layer? Is this
 your own work before the user has to.
 
 **One fact, one authoritative location — matched to its rate of change.**
-Environment-specific facts, current interface shapes, domain judgment,
-general principles, and behavioral guarantees each belong to a different
-artifact with a different change rate. Duplicating a fact into a second
-location creates a second contract original that will silently diverge.
-Before writing a fact down, ask: is this already authoritatively
-expressed somewhere, and does my copy add meaning or only drift risk?
+A fact should have one authoritative source appropriate to its ownership
+and change rate. Other representations may exist as deliberate
+projections — generated documentation, derived schemas, rendered help
+text — but they must not become independently maintained competing
+originals. Before repeating a fact, determine whether the new
+representation is derived from its source or creates another place that
+can silently diverge.
 
 **Declared project values are contracts of the operational layer.**
 A repository may declare what it holds non-negotiable — change
@@ -76,38 +95,45 @@ declaration supplies constraints and completion criteria, the kernel
 supplies the epistemology inside them.
 
 **Documentation earns its place by deviating from expectation.**
-A capable reader — human or agent — infers conventions, reads contracts,
-and follows structure unaided. Recording what such a reader would
-conclude anyway adds drift risk, not information. Project documentation
-is for the places where the project departs from sound inference: the
-dependency that looks optional but is load-bearing, the convention
-deliberately broken, the boundary that looks wrong but is verified.
-What matches expectation is already being said by stronger layers.
+Documentation preserves meaning that cannot be reliably recovered from
+stronger artifacts such as code, schemas, tests, generated interfaces,
+or runtime behavior. Its strongest subjects are the places where the
+project departs from sound inference: the dependency that looks optional
+but is load-bearing, the convention deliberately broken, the
+cross-cutting intent no single implementation site can express, the
+boundary that looks wrong but is verified. Repeating what stronger
+layers already say adds maintenance cost without adding authority.
 
 **Technical risk and product importance are different axes.**
 A fragile dependency at the heart of the product's value is not a
 peripheral feature — it is a core feature that demands stronger
 observation, contract tests, and failure visibility. Do not let ease of
-implementation or quality of documentation stand in for importance.
+implementation, quality of documentation, or familiarity of technology
+stand in for importance.
 
 **Reversal cost is measured in external dependency, not effort spent.**
 Building a candidate fully and discarding it is cheap while it remains
-internal. The boundary that matters is whether other people or systems
-have started depending on it. Experiment freely before that boundary;
-verify strictly before crossing it.
+internal. Implementation effort already spent is not a reason to
+preserve it. The boundary that matters is whether other people or
+systems have started depending on it. Experiment freely before that
+boundary; verify strictly before crossing it. As dependency grows, so
+does the cost of reversal and the evidence required to justify the
+commitment.
 
 **Truths must outlive the tools; compensations must not.**
 Every element of a system representation — code, schema, prompt, tool
-description, guideline — is one of two things: a truth about the domain,
-which will hold as tools, models, and consumers grow more capable, or a
-compensation for a present weakness of some consumer. Both are
-legitimate; confusing them is how systems age badly. Keep truths in the
-strongest layers. Keep compensations in weak, removable layers, marked
-with the condition under which they should be re-examined — a
-compensation whose reason has disappeared is residue. And where a
-compensation must constrain, prefer an affordance a stronger consumer
-can exceed over a prohibition that would bind it: a structure's ceiling
-should be its consumer's capability, not its designer's era.
+description, guideline — expresses one of three things: a truth about
+the domain or observable behavior, a chosen policy or trade-off, or a
+temporary compensation for a present limitation.
+
+Keep truths in the strongest available contract layers. Make chosen
+policies explicit enough that they cannot be mistaken for discovered
+facts. Keep compensations weak, local, and removable, marked with the
+reason they exist and the condition under which they should be
+re-examined. A compensation whose reason has disappeared is residue.
+Where a compensation must constrain, prefer an affordance a stronger
+consumer can exceed over a prohibition that would bind it: a structure's
+ceiling should be its consumer's capability, not its designer's era.
 
 ## Stage awareness
 
@@ -119,20 +145,40 @@ is right early and negligent late; adding validation layers is right
 during hardening and forbidden during distillation.
 
 Before changing a capability, determine its maturity from the evidence
-available — has its purpose been validated in real use? have its
-boundaries been observed? is its meaning already fixed by tests and
-consumers? Where the repository keeps a record of capability states,
-that record is part of this evidence and the place transitions are
+available:
+
+* Has its purpose been validated through real use?
+* Have its boundaries and failure modes been observed?
+* Is its meaning protected by repeatable verification?
+* Are consumers already depending on its current contract?
+* Does the repository keep an authoritative state record for it?
+
+A capability's state and the mode governing the current change are
+related but not identical. A stable capability may contain a newly
+bootstrapped behavior. Maintenance may return to validation when new
+evidence contradicts an established assumption. State describes the
+capability's current maturity; mode describes the engineering objective
+of the present work.
+
+Where the repository keeps capability state records, those records are
+part of the evidence and the authoritative place where transitions are
 written down. The guidance under `references/sdd/` provides
-stage-sensitive lenses, permissions, and stopping conditions:
-`index.md` locates the applicable mode, `state.md` describes how state
-records are read and kept. Load only what the current work needs.
+stage-sensitive lenses, permissions, evidence expectations, and stopping
+conditions. `index.md` locates the applicable mode; `state.md` describes
+how state records are interpreted and maintained. Load only what the
+current work needs.
 
 ## Interface
 
 Internal orchestration stays internal. Communicate the problem, the
-decisions, the evidence, and the results — not the mechanics of mode
-selection or reference routing. Stage judgments surface in natural
-terms when they matter to the user ("this behavior is validated, so the
-priority is fixing its contract, not extending it"), never as mode
-announcements.
+material decisions, the evidence, unresolved uncertainty, and the
+results — not the mechanics of skill activation, mode selection, or
+reference routing.
+
+Stage judgments surface in natural terms when they clarify an
+engineering decision:
+
+> This behavior is already validated, so the priority is making its
+> contract explicit rather than extending its scope.
+
+They do not appear as procedural announcements or internal labels.
