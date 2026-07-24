@@ -1,0 +1,6 @@
+# Files executed on Linux CI runners must keep LF endings regardless of the
+# contributor's platform or core.autocrlf setting. CRLF here breaks bash
+# (\r in the shebang → "bad interpreter") and can trip YAML/tools on the runner.
+*.sh   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
