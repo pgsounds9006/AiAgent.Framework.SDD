@@ -26,6 +26,17 @@ installation — what counts is the task showing the skill at work, not
 the loader showing its name. Whatever the result, write nothing yet:
 the other half of the evidence comes from the survey.
 
+A harness may load skills only at session start, putting this
+observation beyond the installing session's own reach. That does not
+defer it: the installation is a procedure, not a session, and it ends
+when its observations exist, not when its files are copied. If the
+harness offers a way to run a task in a fresh session — an exec mode,
+a sub-session — using it is part of this procedure. Only a harness
+that offers none turns the remainder into a handoff, and a handoff is
+explicit: the installation reports itself incomplete and names the
+observations still owed, so the next session's first substantive task
+knows it is finishing an installation rather than merely using one.
+
 ## Read wide
 
 Reading is what makes the survey possible — coupling cannot be judged
@@ -67,6 +78,12 @@ and double voice by reading the resident configuration against the
 skill. "This harness probably can't integrate it" remains a
 presumption; "this rules file contradicts the skill at these points"
 is an observation, and only the second licenses writing.
+
+And an observation is a recorded finding, not an executed command:
+which voices exist, what each was found to say on this skill's
+subjects, and the verdict for each. A probe that ran without its
+finding written down observed nothing — the ladder consumes findings,
+and the bridge's registration cites them.
 
 ## The ladder
 
