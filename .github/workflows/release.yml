@@ -1,9 +1,16 @@
 name: Release skill
 
+# Release is driven by the version in SKILL.md: when a change to it lands on
+# main, this creates the v<version> tag and release if one does not exist yet.
+# The frontmatter version is the single source of truth; the tag is derived
+# from it, so the two can never disagree. Use workflow_dispatch for the first
+# release or to re-run on demand.
 on:
   push:
-    tags:
-      - 'v*'
+    branches: [main]
+    paths:
+      - 'src/skills/software-development/SKILL.md'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -15,24 +22,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Verify tag matches SKILL.md version
+      - name: Read skill version
+        id: ver
         run: |
-          TAG_VERSION="${GITHUB_REF_NAME#v}"
-          SKILL_VERSION="$(grep -m1 '^version:' src/skills/software-development/SKILL.md | sed 's/^version:[[:space:]]*//' | tr -d '[:space:]')"
-          echo "tag=$TAG_VERSION  skill=$SKILL_VERSION"
-          if [ "$TAG_VERSION" != "$SKILL_VERSION" ]; then
-            echo "::error::Tag $GITHUB_REF_NAME (=$TAG_VERSION) does not match SKILL.md version $SKILL_VERSION"
-            exit 1
-          fi
+          VERSION="$(grep -m1 '^version:' src/skills/software-development/SKILL.md | sed 's/^version:[[:space:]]*//' | tr -d '[:space:]')"
+          echo "$VERSION" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$' \
+            || { echo "::error::version '$VERSION' is not semver x.y.z"; exit 1; }
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Package skill
-        run: bash scripts/package-skill.sh
-
-      - name: Create release
+      - name: Check whether release already exists
+        id: check
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" \
+          if gh release view "${{ steps.ver.outputs.tag }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "release ${{ steps.ver.outputs.tag }} already exists — nothing to do"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Package skill
+        if: steps.check.outputs.exists == 'false'
+        run: bash scripts/package-skill.sh
+
+      - name: Create release
+        if: steps.check.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.ver.outputs.tag }}" \
             software-development.skill \
-            --title "$GITHUB_REF_NAME" \
+            --target "$GITHUB_SHA" \
+            --title "${{ steps.ver.outputs.tag }}" \
             --generate-notes
