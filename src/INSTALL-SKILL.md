@@ -2,14 +2,36 @@
 
 Installing this skill means giving one agent environment — a harness —
 a way to consult this repository at the right moments. The procedure
-has an unusual shape: it begins by assuming nothing needs to be written
-at all, reads far more than it writes, and treats every written line as
-a liability to be justified by an observed failure.
+has an unusual shape: its first act is its cheapest experiment, it
+reads far more than it writes, and it treats every written line as a
+liability to be justified by an observed failure.
 
-## Read first, and read wide
+## First act: place, and observe
 
-Installation happens once; its cost is amortized over every later use.
-So read wide before writing anything: `RATIONALE.md` for the reasons —
+Place the skill directory — `skills/software-development/` — where the
+harness's own loader looks, and run a substantive engineering task. This placement is the precondition of every rung
+that follows: it costs nothing to reverse, and it is the only way to
+observe which rung the harness actually is. Do not infer the rung from
+the harness's documentation or reputation; run the experiment.
+
+A harness that loads SKILL.md-format skills natively is completely
+installed by that placement. Stop there. Writing a bridge for such a
+harness is residue at birth; writing hooks, wrapper scripts, or
+additional always-on rules around it is worse — an intervention
+compensating for a weakness that was never observed.
+
+**A bridge is a compensation, and a compensation requires an observed
+weakness.** Only an observed loading failure licenses going further: a
+substantive task was attempted, and the harness demonstrably did not
+consult the skill. "This harness probably can't load it" is a
+presumption, and the kernel's provenance rule applies to the bridge's
+own reason for existing.
+
+## Before writing anything, read wide
+
+A failure was observed, so something will now be written — and this is
+the point where reading pays. Installation happens once; its cost is
+amortized over every later use. Read `RATIONALE.md` for the reasons —
 an installer holding only rules is correct only in enumerated cases,
 while one holding the reasons is correct in the cases nothing
 enumerates — and `skills/software-development/SKILL.md` with its
@@ -17,24 +39,6 @@ references, because they are the thing being installed and their
 description is the authority on when the skill should trigger. Reading
 creates no coupling. Restating does. Read everything; bind to almost
 nothing.
-
-## Rung zero: no bridge
-
-**A bridge is a compensation, and a compensation requires an observed
-weakness.** Installation therefore starts with the null hypothesis:
-place the skill directory — `skills/software-development/`, taken from
-`src/` — where the harness's own loader looks, and observe.
-A harness that loads SKILL.md-format skills natively is completely
-installed by placement. Writing a bridge there is residue at
-birth; writing hooks, wrapper scripts, or additional always-on rules
-around it is worse — an intervention compensating for a weakness that
-was never observed.
-
-Only an observed loading failure licenses the next rung: a substantive
-engineering task was attempted, and the harness demonstrably did not
-consult the skill. "This harness probably can't load it" is a
-presumption, and the kernel's provenance rule applies to the bridge's
-own reason for existing.
 
 ## The ladder
 
