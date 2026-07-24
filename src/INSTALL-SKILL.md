@@ -69,7 +69,14 @@ unconsulted; the first act's task is the probe for this. *Conflict* —
 a resident instruction and the skill pull the same judgment in
 opposite directions, with nothing saying which yields. *Double voice*
 — the harness already carries engineering guidance of its own, and
-the same judgment now answers to two authorities.
+the same judgment now answers to two authorities. This finding
+splits, and the split decides everything: voices that reach the same
+judgments are *agreement overlap* — redundancy, whose cost is context
+and whose remedy, if one is ever needed, is scoping, not writing. It
+licenses nothing. Voices that differ in strength, scope, or direction
+impose an adjudication burden on every task they touch; that burden
+is the weakness, and what it licenses is a precedence declaration,
+not a router.
 
 **A bridge is a compensation, and a compensation requires an observed
 weakness** — and every weakness above is observable here, inside the
@@ -100,13 +107,16 @@ compensating for a weakness that was never observed.
 always-loaded configuration surface (a rules file, agent guidelines,
 a system-prompt section), and either it lacks native skill loading,
 or loading succeeded while the survey found a coupling failure — a
-resident voice that silences the skill, collides with it, or already
-speaks on its subjects. Add the four elements below as a short block;
-for a coupling failure, the subordination clause is the element doing
-the work, because it writes down the precedence the survey showed was
-missing. Resist the surrounding convention: such files usually carry
-content, and the pressure to inline "just the key principles" is
-exactly the copy this document forbids.
+resident voice that silences the skill, collides with it, or speaks
+on its subjects with divergent strength or scope. Agreement overlap
+licenses nothing. The block carries only the elements that answer the
+licensed failure, the registration always among them: a routing
+failure takes the trigger and the entry point; a collision or
+divergent overlap takes the precedence line — the one sentence that
+writes down which authority governs where both speak. Resist the
+surrounding convention: such files usually carry content, and the
+pressure to inline "just the key principles" is exactly the copy this
+document forbids.
 
 **Rung 2 — a dedicated bridge file.** The harness loads auxiliary
 instruction files from a known location but offers no shared
@@ -129,8 +139,10 @@ copy's failure mode.
 
 ## What a bridge contains
 
-Four elements, and nothing else. If the bridge is growing past them,
-the work has drifted from bridging to porting — stop.
+Element types, not a checklist: a bridge carries only those its
+licensed failure needs, the registration always among them. If the
+bridge is growing past what the failure licensed, the work has
+drifted from bridging to porting — stop.
 
 **A trigger condition, derived at install time from the source's
 description.** The description in `SKILL.md` is the authoritative
@@ -149,7 +161,12 @@ layout has bound itself to structure that may change.
 **A subordination clause.** The bridge yields, explicitly, to the
 project's declared values (security, compliance, compatibility, audit —
 the kernel itself makes these binding), to the harness's own policies,
-and to direct user instruction. A router outranks nothing.
+and to direct user instruction. A router outranks nothing. And when
+the licensed failure is an adjudication burden — two authorities on
+one subject — this clause carries one more line, the only one that
+answers that failure: which authority governs where both speak.
+Subordinating the bridge settles nothing between them; the precedence
+must be written, or the failure survives its own compensation.
 
 **Its own registration as a compensation.** The observed failure that
 licensed this rung, dated; where the authoritative source lives (URL
@@ -200,7 +217,9 @@ changes.
 ```
 
 Every directive above is visible in it, which is the template's only
-purpose. Adapt the form to the harness; keep the four elements.
+purpose. Adapt the form to the harness; carry the elements the
+licensed failure needs, and for an adjudication burden add the
+precedence line.
 
 ## Validation is part of installation
 
@@ -213,6 +232,12 @@ installation works if conclusions change, and decorates if only the
 wording changes. **The quiet check:** confirm that a small,
 self-contained question does not pull the source into context —
 undertriggering there is intended behavior, and an installation that
-defeats it has made the integration worse, not better. Record both
-observations wherever the harness records such judgments; they are the
-evidence the bridge's registration cites.
+defeats it has made the integration worse, not better.
+
+And a bridge is validated against the failure that licensed it: a
+routing check validates routing elements only, and a precedence line
+is validated by a task where both authorities speak and the declared
+one governs. Closing observations that never touch the licensed
+failure close nothing — the installation is unaudited, not complete.
+Record the observations wherever the harness records such judgments;
+they are the evidence the bridge's registration cites.
