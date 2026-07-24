@@ -14,18 +14,28 @@ that follows: it costs nothing to reverse, and it is the only way to
 observe which rung the harness actually is. Do not infer the rung from
 the harness's documentation or reputation; run the experiment.
 
-A harness that loads SKILL.md-format skills natively is completely
-installed by that placement. Stop there. Writing a bridge for such a
-harness is residue at birth; writing hooks, wrapper scripts, or
-additional always-on rules around it is worse — an intervention
-compensating for a weakness that was never observed.
+A harness that loads this skill natively and consults it during that
+task is completely installed by that placement. Stop there. Writing a
+bridge for such a harness is residue at birth; writing hooks, wrapper
+scripts, or additional always-on rules around it is worse — an
+intervention compensating for a weakness that was never observed.
+Appearing in a skill list is registration, not installation: what
+closes the placement is the task showing the skill at work, not the
+loader showing its name.
 
 **A bridge is a compensation, and a compensation requires an observed
-weakness.** Only an observed loading failure licenses going further: a
-substantive task was attempted, and the harness demonstrably did not
-consult the skill. "This harness probably can't load it" is a
-presumption, and the kernel's provenance rule applies to the bridge's
-own reason for existing.
+weakness.** Only an observed failure licenses going further, and
+loading is not the only place a placement fails. Three couplings fail
+too. *Silence* — the skill loads, but the harness's resident
+configuration so dominates the context that the skill is never
+actually consulted. *Conflict* — a resident instruction and the skill
+pull a judgment in opposite directions, and nothing says which yields.
+*Double voice* — the harness already carries engineering guidance of
+its own, and the same judgment now answers to two authorities. Each of
+these is as observable as a loading failure, and only observation
+counts: "this harness probably can't integrate it" is a presumption,
+and the kernel's provenance rule applies to the bridge's own reason
+for existing.
 
 ## Before writing anything, read wide
 
@@ -45,15 +55,20 @@ nothing.
 Each rung is a larger compensation, and each is licensed only by the
 observed failure of the rung below.
 
-**Rung 0 — placement.** Native loaders. Nothing is written.
+**Rung 0 — placement.** The harness loads the skill and the task shows
+it consulted. Nothing is written.
 
 **Rung 1 — a pointer in existing configuration.** The harness has an
 always-loaded configuration surface (a rules file, agent guidelines, a
-system-prompt section) but no native skill loading. Add the four
-elements below as a short block — and resist the surrounding
-convention: such files usually carry content, and the pressure to
-inline "just the key principles" is exactly the copy this document
-forbids.
+system-prompt section), and either it lacks native skill loading, or
+loading succeeded while the coupling failed — the resident
+configuration silenced the skill, collided with it, or already speaks
+on the same subjects. Add the four elements below as a short block; for
+a coupling failure, the subordination clause is the element doing the
+work, because it writes down the precedence the collision showed was
+missing. Resist the surrounding convention: such files usually carry
+content, and the pressure to inline "just the key principles" is
+exactly the copy this document forbids.
 
 **Rung 2 — a dedicated bridge file.** The harness loads auxiliary
 instruction files from a known location but offers no shared
@@ -101,7 +116,8 @@ and to direct user instruction. A router outranks nothing.
 **Its own registration as a compensation.** The observed failure that
 licensed this rung, dated; where the authoritative source lives (URL
 and commit, if vendored); and the conditions for re-examination or
-deletion — the harness gaining native loading, the source moving its
+deletion — the failure's cause disappearing (native loading arriving,
+the colliding resident rule being removed), the source moving its
 entry point, the description changing.
 
 ## Directives that keep the coupling loose
@@ -127,7 +143,7 @@ must cost exactly one thing — the routing — and nothing more.
 
 ```md
 # Bridge → AiAgent.Framework.SDD
-Compensates for: <the observed loading failure, dated>.
+Compensates for: <the observed failure, dated>.
 Source: <url> @ <commit>. This file routes to the source and contains
 none of its content.
 
@@ -140,8 +156,9 @@ routing before proceeding.
 This bridge yields to the project's declared values, this harness's
 own policies, and direct user instruction.
 
-Re-examine when: the harness gains native skill loading; the source
-moves its entry point; the source's description changes.
+Re-examine when: the failure this compensates for can no longer be
+observed; the source moves its entry point; the source's description
+changes.
 ```
 
 Every directive above is visible in it, which is the template's only
