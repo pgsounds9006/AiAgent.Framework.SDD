@@ -29,6 +29,31 @@ axis, what was deliberately omitted, where the risk lives, what
 remains unresolved. Read it before adopting, and before installing —
 reasons are what keep an installer correct in the cases no
 instruction enumerates. **The procedure** is in
-`src/INSTALL-SKILL.md`, including the case that needs no procedure at
-all: a harness that loads SKILL.md natively is installed by placement
-alone.
+`src/INSTALL-SKILL.md`.
+
+## Installing
+
+Give an agent this:
+
+```
+Read and proceed:
+https://github.com/pgsounds9006/AiAgent.Framework.SDD/blob/main/src/INSTALL-SKILL.md
+```
+
+The shortest case needs almost none of that procedure: a harness that
+loads SKILL.md-format skills natively is installed by placing
+`src/skills/software-development/` where its loader looks. The
+procedure exists for what comes after that — observing whether the
+placement actually works, and writing a bridge only where an observed
+failure calls for one.
+
+## Removing
+
+Give an agent this:
+
+```
+Remove AiAgent.Framework.SDD.
+```
+
+There is no procedure to follow, because installation leaves nothing
+an agent cannot find.
