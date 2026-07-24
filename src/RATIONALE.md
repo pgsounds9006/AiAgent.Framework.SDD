@@ -132,7 +132,8 @@ compatibility, audit — are operational-layer contracts the kernel makes
 binding over any mode; no stage call outranks them. Each mode carries
 stop conditions that anticipate its own abuse — distill's says in so
 many words that passing tests are necessary but not sufficient. The
-mode-mismatch signals in `index.md` are tripwires for exactly the
+mode-mismatch signals in the skill's `references/sdd/index.md` are
+tripwires for exactly the
 misreadings above.
 
 The adoption posture follows from the framework's own rules rather than
@@ -163,14 +164,20 @@ silence that fails closed, not a hazard that fails open.
 **Stage adjudication is under-specified relative to its leverage.** The
 stage judgment is the most consequential input in the system, and two
 readings of the same repository can reach different stages. The state
-record (`references/sdd/state.md`) preserves a judgment so it need not
-be re-derived; it does not make the judgment better. The planned
-correction is an `evals/` directory — representative cases per stage,
-boundary cases, known misjudgments, the with/without comparison below —
-and a judgment rubric written as a decision procedure: which evidence
-types count, what falsifies a stage call, an explicit undetermined
-state. Not numeric thresholds, which would be arbitrary values wearing
-the appearance of discovered boundaries.
+record (the skill's `references/sdd/state.md`) preserves a judgment so
+it need not
+be re-derived; it does not make the judgment better. The correction is
+not a pre-built evaluation suite: fabricated cases would carry answer
+keys authored by the very judgment under test, and fixing an
+evaluation's shape before real disagreements have been observed is
+hardening inside bootstrap. The collection instrument already exists —
+the state record. Real use produces judgments with their evidence;
+records make disagreement between sessions observable; and a rubric —
+which evidence types count, what falsifies a stage call, an explicit
+undetermined state — is distilled later from those observed cases,
+where the ground truth is what subsequently happened rather than what
+an author declared. Not numeric thresholds, which would be arbitrary
+values wearing the appearance of discovered boundaries.
 
 ## Failure mode
 

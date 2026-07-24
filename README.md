@@ -22,12 +22,13 @@ from and when it may be fixed. The full argument is in `RATIONALE.md`.
 
 ## Where everything lives
 
-**The content** is the skill itself: `SKILL.md` and its references —
-read them, not summaries of them. **The reasons** are in
-`RATIONALE.md`: why one axis, what was deliberately omitted, where the
-risk lives, what remains unresolved. Read it before adopting, and
-before installing — reasons are what keep an installer correct in the
-cases no instruction enumerates. **The procedure** is in
-`INSTALL-SKILL.md`, including the case that needs no procedure at all:
-a harness that loads SKILL.md natively is installed by placement
+Everything that ships lives under `src/`. **The content** is the
+skill itself at `src/skills/software-development/` — read it, not
+summaries of it. **The reasons** are in `src/RATIONALE.md`: why one
+axis, what was deliberately omitted, where the risk lives, what
+remains unresolved. Read it before adopting, and before installing —
+reasons are what keep an installer correct in the cases no
+instruction enumerates. **The procedure** is in
+`src/INSTALL-SKILL.md`, including the case that needs no procedure at
+all: a harness that loads SKILL.md natively is installed by placement
 alone.

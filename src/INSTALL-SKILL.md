@@ -9,11 +9,11 @@ a liability to be justified by an observed failure.
 ## Read first, and read wide
 
 Installation happens once; its cost is amortized over every later use.
-So read wide before writing anything: `README.md` for orientation;
-`RATIONALE.md` for the reasons — an installer holding
-only rules is correct only in enumerated cases, while one holding the
-reasons is correct in the cases nothing enumerates; and `SKILL.md` with
-its references, because they are the thing being installed and their
+So read wide before writing anything: `RATIONALE.md` for the reasons —
+an installer holding only rules is correct only in enumerated cases,
+while one holding the reasons is correct in the cases nothing
+enumerates — and `skills/software-development/SKILL.md` with its
+references, because they are the thing being installed and their
 description is the authority on when the skill should trigger. Reading
 creates no coupling. Restating does. Read everything; bind to almost
 nothing.
@@ -22,10 +22,10 @@ nothing.
 
 **A bridge is a compensation, and a compensation requires an observed
 weakness.** Installation therefore starts with the null hypothesis:
-place the repository where the harness's own loader looks, and observe.
-A harness that loads SKILL.md-format skills natively — default Claude
-Code, or any Claude-family environment with a skills directory — is
-completely installed by placement. Writing a bridge there is residue at
+place the skill directory — `skills/software-development/`, taken from
+`src/` — where the harness's own loader looks, and observe.
+A harness that loads SKILL.md-format skills natively is completely
+installed by placement. Writing a bridge there is residue at
 birth; writing hooks, wrapper scripts, or additional always-on rules
 around it is worse — an intervention compensating for a weakness that
 was never observed.
